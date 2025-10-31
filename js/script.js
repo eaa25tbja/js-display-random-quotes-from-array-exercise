@@ -26,3 +26,26 @@ const quotesListe = [
       "I want my children to have all the things I couldn’t afford. Then I want to move in with them.",
   },
 ];
+
+function getRandomQuote() {
+  if (quotesListe.length === 0) {
+    const errorMsg = "No quotes available!!!!";
+    document.getElementById("quotes").innerHTML = `<p>${errorMsg}</p>`;
+  } else {
+    const randomIndex = Math.floor(Math.random() * quotesListe.length);
+    return quotesListe[randomIndex];
+  }
+}
+
+function displayRandomQuote() {
+  const randomQuote = getRandomQuote();
+  let quoteDetails = "";
+  quoteDetails += `
+    <p>"${randomQuote.quote}"</p>
+    <h4>${randomQuote.author}</h4>
+  `;
+  document.getElementById("quotes").innerHTML = quoteDetails;
+}
+
+const displayQuoteBtn = document.getElementById("displayQuoteBtn");
+displayQuoteBtn.addEventListener("click", displayRandomQuote);
